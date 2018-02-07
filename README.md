@@ -1,0 +1,1 @@
+# Lykke.Service.Stratis.Sign
