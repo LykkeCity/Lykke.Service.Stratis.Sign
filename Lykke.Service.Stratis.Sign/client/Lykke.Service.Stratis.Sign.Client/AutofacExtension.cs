@@ -6,7 +6,7 @@ namespace Lykke.Service.Stratis.Sign.Client
 {
     public static class AutofacExtension
     {
-        public static void RegisterStratis.SignClient(this ContainerBuilder builder, string serviceUrl, ILog log)
+        public static void RegisterStratisSignClient(this ContainerBuilder builder, string serviceUrl, ILog log)
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
             if (serviceUrl == null) throw new ArgumentNullException(nameof(serviceUrl));
@@ -14,15 +14,15 @@ namespace Lykke.Service.Stratis.Sign.Client
             if (string.IsNullOrWhiteSpace(serviceUrl))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(serviceUrl));
 
-            builder.RegisterType<Stratis.SignClient>()
+            builder.RegisterType<StratisSignClient>()
                 .WithParameter("serviceUrl", serviceUrl)
-                .As<IStratis.SignClient>()
+                .As<IStratisSignClient>()
                 .SingleInstance();
         }
 
-        public static void RegisterStratis.SignClient(this ContainerBuilder builder, Stratis.SignServiceClientSettings settings, ILog log)
+        public static void RegisterStratisSignClient(this ContainerBuilder builder, StratisSignServiceClientSettings settings, ILog log)
         {
-            builder.RegisterStratis.SignClient(settings?.ServiceUrl, log);
+            builder.RegisterStratisSignClient(settings?.ServiceUrl, log);
         }
     }
 }
