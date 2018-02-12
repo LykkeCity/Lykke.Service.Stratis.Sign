@@ -9,5 +9,6 @@ namespace Lykke.Service.Stratis.Sign.Models
         public string PrivateKey { get; set; }
 
         public string PublicAddress { get; set; }
+        public string FromAddressContext { get; set; }
     }
 }
